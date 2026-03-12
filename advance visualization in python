@@ -1,0 +1,241 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOboy0qvRaPjT+QTHGPWj4g",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/shahbaz123-gif/INTRODUCTION-to-pandas/blob/main/advance%20visualization%20in%20python\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "o2nNvdYn0GzP"
+      },
+      "outputs": [],
+      "source": [
+        "import pandas as pd\n",
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.set(style=\"ticks\")"
+      ],
+      "metadata": {
+        "id": "B3yK9GPi0qe-"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "weather = pd.read_csv('test.csv')\n"
+      ],
+      "metadata": {
+        "id": "EaEnrVFJ0zG9"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(weather.head())\n"
+      ],
+      "metadata": {
+        "id": "P5Cyp-9H07Rw"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(weather.info())"
+      ],
+      "metadata": {
+        "id": "bhjiW-rW1A-I"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.barplot(x=weather['humidity'], y=weather['temperature'])"
+      ],
+      "metadata": {
+        "id": "_ERPqPNQ1D-9"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.distplot(weather['humidity'])\n",
+        "plt.show(sns.distplot(weather['humidity'], kde=False, rug=True))\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "8j-v_-TR1O7f"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.jointplot(x=weather['humidity'], y=weather['temperature'])\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "vdBtO0jh1ikj"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.jointplot(x=weather['humidity'], y=weather['temperature'], kind=\"hex\")\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "cjuAFpjQ1z3l"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.jointplot(x=weather['humidity'], y=weather['temperature'], kind=\"kde\")\n",
+        "plt.show"
+      ],
+      "metadata": {
+        "id": "2evBBTWm2FeD"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.pairplot(weather[['humidity', 'temperature', 'air_polution_index']])\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "6iRC4kmx2RpN"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.stripplot(x=weather['weather_type'], y=weather['temperature'])\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "RQjqJuCb2kz3"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.stripplot(x=weather['weather_type'], y=weather['temperature'], jitter=True)\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "-zKI9xme2xz6"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.swarmplot(x=weather['humidity'], y=weather['temperature'])\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "1-5_NfU13Lff"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.barplot(x=weather['humidity'], y=weather['temperature'], hue=weather['weather_type'])\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "T2wJL5tc3YoU"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "snscountplot(x=weather['weather_type'])\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "AZKQmzWZ3oNN"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sns.pointplot(x=weather['humidity'], y=weather['temperature'], hue=weather['weather_type'])\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "GA-KYhV43vp0"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "xYrsN617398B"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
